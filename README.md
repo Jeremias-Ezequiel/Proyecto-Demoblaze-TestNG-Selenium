@@ -1,12 +1,12 @@
 # Proyecto Demoblaze - QA Automation - Java con Selenium
 
 Este proyecto toma casos de prueba funcionales que fueron diseñados en un proyecto previo de QA Manual.
-(Proyecto Demoblaze - Manual)[https://drive.google.com/drive/folders/1NNrSTctmmEbDrJe57r2TpkuZCK-QMZbM?usp=sharing]
+!(Proyecto Demoblaze - Manual)[https://drive.google.com/drive/folders/1NNrSTctmmEbDrJe57r2TpkuZCK-QMZbM?usp=sharing]
 
 ## Objetivos del Proyecto
 
 - Convertir casos de prueba manuales en pruebas automatizadas para optimizar el proceso de validacion de funcionalidades en una aplicacion web. 
-- Implementar herramientas de automatizacion para asegurar la robustex y escalabilidad de las pruebas.
+- Implementar herramientas de automatizacion para asegurar la robustes y escalabilidad de las pruebas.
 - Familiarizarme con el ciclo completo de QA Automation, desde la planificacion hasta la ejecucion y generacion de reportes. 
 
 ## Tecnologias Utilizadas
