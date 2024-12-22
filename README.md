@@ -1,7 +1,7 @@
 # Proyecto Demoblaze - QA Automation - Java con Selenium
 
 Este proyecto toma casos de prueba funcionales que fueron diseñados en un proyecto previo de QA Manual.
-!(Proyecto Demoblaze - Manual)[https://drive.google.com/drive/folders/1NNrSTctmmEbDrJe57r2TpkuZCK-QMZbM?usp=sharing]
+[Proyecto Demoblaze - Manual](https://drive.google.com/drive/folders/1NNrSTctmmEbDrJe57r2TpkuZCK-QMZbM?usp=sharing)
 
 ## Objetivos del Proyecto
 
