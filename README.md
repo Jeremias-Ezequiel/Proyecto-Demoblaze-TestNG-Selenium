@@ -23,6 +23,7 @@ Este proyecto toma casos de prueba funcionales que fueron diseñados en un proye
     - Poiji 
     - Commons
 - Reporte : Allure
+- Plugin : Surefire-plugin
 
 ## Configuracion del Ambiente
 
