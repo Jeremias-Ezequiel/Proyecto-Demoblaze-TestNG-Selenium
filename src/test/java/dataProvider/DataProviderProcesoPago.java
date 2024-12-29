@@ -1,4 +1,4 @@
-package utilities;
+package dataProvider;
 
 import org.testng.annotations.DataProvider;
 import reader.ExcelReader;

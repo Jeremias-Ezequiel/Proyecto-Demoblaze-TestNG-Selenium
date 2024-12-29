@@ -1,82 +1,51 @@
 package automation;
 
-import io.qameta.allure.Feature;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import dataProvider.DataProviderProcesoPago;
+import io.qameta.allure.Description;
+import pages.ProcesoPagoPage;
 import templates.ModeloProcesoPago;
 import utilities.BaseTest;
-import utilities.DataProviderProcesoPago;
 import utilities.Logs;
-import utils.Mensajes;
 
-import java.time.Duration;
-
-@Feature("Proceso de pago - Chrome")
 public class ProcesoPagoTests extends BaseTest {
-    private String URL = "https://demoblaze.com/";
-    Mensajes mensajes = new Mensajes();
+    private final String URL = "https://demoblaze.com/cart.html"; 
+    private final ProcesoPagoPage procesoPago = new ProcesoPagoPage(); 
+    private final String mensajeCompraFallida = "Please fill out Name and Creditcard."; 
 
-    @Test(dataProvider = DataProviderProcesoPago.DP_NEGATIVO,dataProviderClass = DataProviderProcesoPago.class, groups = {regression,smoke})
-    public void validarCamposVacios(ModeloProcesoPago datos) {
-
-        Logs.debug("Ejecutando caso de prueba: %s",datos.getId());
-        rellenarFormularioCompra(datos);
-        String mensaje = mensajes.obtenerMensajeModal(driver);
-        softAssert.assertEquals(mensaje,mensajes.getMensajePagoFallo(),String.format("Error : El mensajes espera era: %s, y el mensaje obtenido fue: %s",mensajes.getMensajePagoFallo(),mensaje));
-
-        softAssert.assertAll();
-    }
-
-    @Test(dataProvider = DataProviderProcesoPago.DP_POSITIVO, dataProviderClass = DataProviderProcesoPago.class)
-    public void validarCompraExitosa(ModeloProcesoPago datos){
-        Logs.debug("Ejecutando caso de prueba : %s", datos.getId());
-        rellenarFormularioCompra(datos);
-
-        Logs.debug("Esperando a que sea visible el mensaje de exito");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3)); 
-        WebElement modalExito = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("orderModal"))); 
-
-        softAssert.assertTrue(modalExito.isDisplayed(),"El mensaje de compra exitosa no es viisble");
-
-        softAssert.assertAll();
-    }
-
-    private void rellenarFormularioCompra(ModeloProcesoPago datos){
-        Logs.info("Ingresando a la url: %s",URL);
+    @BeforeMethod(alwaysRun = true)
+    public void setUp(){
+        Logs.info("Navegando a la pagina");
         driver.get(URL);
 
-        // Haciendo clic en el botón para ir al carrito
-        WebElement btnCart = driver.findElement(By.id("cartur")); 
-        btnCart.click();
+        procesoPago.waitPageToLoad();
+    }
 
-        Logs.debug("Buscando botón : 'Place Order' ");
-        WebElement btnPlaceOrder = driver.findElement(By.cssSelector("#page-wrapper button[type='button']"));
-        btnPlaceOrder.click();
+    @Description("Verificar el formulario de compra")
+    @Test
+    public void verificarFormularioVisible(){
+        procesoPago.verifyPage();
+    }
 
-        Logs.debug("Esperando a que el modal sea visible");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        WebElement modal = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("orderModal")));
+    @Description("Rellenar el formulario de compra con datos validos")
+    @Test(dataProvider = DataProviderProcesoPago.DP_POSITIVO,dataProviderClass = DataProviderProcesoPago.class,
+    groups = {regression,smoke})
+    public void realizarCompraConDatosValidosTest(ModeloProcesoPago usuario){
+        Logs.info("Test: %s",usuario.getId());
+        procesoPago.rellenarFormulario(usuario.getNombre() , usuario.getPais(), usuario.getCiudad(), usuario.getTarjeta(),
+        usuario.getMes(), usuario.getYear());
+        procesoPago.verificarModalCompraExitosa();
+    }
 
-        Logs.debug("Modal visible. Buscando campos del formulario");
-        WebElement campoNombre = driver.findElement(By.cssSelector("#orderModal input[id='name']"));
-        WebElement campoPais = driver.findElement(By.cssSelector("#orderModal input[id='country']"));
-        WebElement campoCiudad = driver.findElement(By.cssSelector("#orderModal input[id='city']"));
-        WebElement campoTarjeta = driver.findElement(By.cssSelector("#orderModal input[id='card']"));
-        WebElement campoMes = driver.findElement(By.cssSelector("#orderModal input[id='month']"));
-        WebElement campoYear = driver.findElement(By.cssSelector("#orderModal input[id='year']"));
-        
-        Logs.info("Ingresando datos en el formulario");
-        campoNombre.sendKeys(datos.getNombre());
-        campoPais.sendKeys(datos.getPais());
-        campoCiudad.sendKeys(datos.getCiudad());
-        campoTarjeta.sendKeys(datos.getTarjeta());
-        campoMes.sendKeys(datos.getMes());
-        campoYear.sendKeys(datos.getYear());
-        
-        WebElement btnPurchase = driver.findElement(By.xpath("//button[text()='Purchase']"));
-        btnPurchase.click();
+    @Description("Rellenar el formulario de compra con datos invalidos")
+    @Test(dataProvider = DataProviderProcesoPago.DP_NEGATIVO, dataProviderClass = DataProviderProcesoPago.class,
+    groups = {regression,smoke})
+    public void realizarCompraConDatosInvalidos(ModeloProcesoPago usuario){
+        Logs.info("Test: %s",usuario.getId());
+        procesoPago.rellenarFormulario(usuario.getNombre() , usuario.getPais(), usuario.getCiudad(), usuario.getTarjeta(),
+        usuario.getMes(), usuario.getYear());
+        procesoPago.verificarMensajeCompraFallida(mensajeCompraFallida);
     }
 }

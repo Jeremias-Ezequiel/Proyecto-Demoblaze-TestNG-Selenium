@@ -16,19 +16,19 @@ public class ModeloRegistroUsuario implements IFiltrarTipo {
     private String tipo;
 
     public String getId() {
-        return id;
+        return id == null ? "" : id;
     }
 
     public String getUsuario() {
-        return usuario;
+        return usuario == null ? "" : usuario;
     }
 
     public String getPassword() {
-        return password;
+        return password == null ? "" : password;
     }
 
     public String getTipo() {
-        return tipo;
+        return tipo == null ? "" : tipo;
     }
 
     @Override
