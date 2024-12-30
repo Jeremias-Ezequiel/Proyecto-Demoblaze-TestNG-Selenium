@@ -12,6 +12,7 @@ import org.testng.annotations.Listeners;
 public class BaseTest {
     protected final String smoke = "smoke";
     protected final String regression = "regression";
+    protected final CommonFlows commonFlows = new CommonFlows(); 
 
     protected WebDriver driver;
 

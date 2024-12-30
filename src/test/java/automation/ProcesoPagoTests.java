@@ -10,17 +10,13 @@ import templates.ModeloProcesoPago;
 import utilities.BaseTest;
 import utilities.Logs;
 
-public class ProcesoPagoTests extends BaseTest {
-    private final String URL = "https://demoblaze.com/cart.html"; 
+public class ProcesoPagoTests extends BaseTest { 
     private final ProcesoPagoPage procesoPago = new ProcesoPagoPage(); 
     private final String mensajeCompraFallida = "Please fill out Name and Creditcard."; 
 
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-        Logs.info("Navegando a la pagina");
-        driver.get(URL);
-
-        procesoPago.waitPageToLoad();
+        commonFlows.goToCartPage();
     }
 
     @Description("Verificar el formulario de compra")

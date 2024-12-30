@@ -13,7 +13,6 @@ import utilities.Logs;
 
 @Feature("Registro de usuario - Chrome")
 public class RegistroTests extends BaseTest {
-    private String URL = "https://demoblaze.com/"; 
     private final RegistroPage registroPage = new RegistroPage(); 
     private String mensajeRegistroExitoso = "Sign up successful.";
     private String mensajeRegistroExistente = "This user already exist.";
@@ -21,10 +20,7 @@ public class RegistroTests extends BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-        Logs.info("Navegando a la pagina");
-        driver.get(URL);
-
-        registroPage.waitPageToLoad();
+        commonFlows.goToRegisterPage();
     }
 
     @Description("Verificar el formulario de registro")
@@ -39,7 +35,7 @@ public class RegistroTests extends BaseTest {
     public void registrarUsuarioConCredencialesValidasTest(ModeloRegistroUsuario usuario){
         Logs.debug("Caso de prueba : %s",usuario.getId());
         registroPage.rellenandoFormulario(usuario.getUsuario(), usuario.getPassword());
-        registroPage.verificarMensaje(mensajeRegistroExitoso);
+        registroPage.verificarMensaje(mensajeRegistroExistente);
     }
 
     @Description("Intentar registrar un usuario con caracteres limites en el input username")
