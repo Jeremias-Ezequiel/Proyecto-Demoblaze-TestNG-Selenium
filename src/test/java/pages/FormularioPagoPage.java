@@ -11,7 +11,7 @@ import io.qameta.allure.Step;
 import utilities.BasePage;
 import utilities.Logs;
 
-public class ProcesoPagoPage extends BasePage {
+public class FormularioPagoPage extends BasePage {
     private final By btnPlaceOrder = By.cssSelector("button[data-target='#orderModal']"); 
     private final By modalOrder = By.cssSelector("#orderModal .modal-dialog");
     private final By campoNombre = By.cssSelector("#orderModal input[id='name']");
@@ -31,7 +31,7 @@ public class ProcesoPagoPage extends BasePage {
     }
 
     @Override
-    @Step("Verificando el formulario de compra")
+    @Step("Verificando la visibilidad formulario de compra")
     public void verifyPage() {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(btnPlaceOrder));

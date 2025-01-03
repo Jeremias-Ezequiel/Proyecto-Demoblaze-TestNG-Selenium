@@ -24,10 +24,8 @@ public class RegistroPage extends BasePage {
     } 
 
     @Override
-    @Step("Verificando la pagina de login")
+    @Step("Verificando la pagina de Registro")
     public void verifyPage() {
-        Logs.info("Haciendo clic en el boton 'Sign Up'");
-        find(btnRegistro).click();
         waitPage(formulario, this.getClass().getSimpleName());
         Logs.info("Verificando la visibilidad del formulario");
         softAssert.assertTrue(find(btnRegistro).isDisplayed());

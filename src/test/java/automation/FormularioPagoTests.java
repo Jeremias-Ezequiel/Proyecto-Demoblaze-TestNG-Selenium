@@ -5,13 +5,13 @@ import org.testng.annotations.Test;
 
 import dataProvider.DataProviderProcesoPago;
 import io.qameta.allure.Description;
-import pages.ProcesoPagoPage;
+import pages.FormularioPagoPage;
 import templates.ModeloProcesoPago;
 import utilities.BaseTest;
 import utilities.Logs;
 
-public class ProcesoPagoTests extends BaseTest { 
-    private final ProcesoPagoPage procesoPago = new ProcesoPagoPage(); 
+public class FormularioPagoTests extends BaseTest { 
+    private final FormularioPagoPage procesoPago = new FormularioPagoPage(); 
     private final String mensajeCompraFallida = "Please fill out Name and Creditcard."; 
 
     @BeforeMethod(alwaysRun = true)
