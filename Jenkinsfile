@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('Build with the browser selected in headless mode'){
             steps{
-                bat './mvnw clean test -Dgroups="smoke" -Dheadless -Dbrowser=${params.BROWSER}'
+                bat "./mvnw clean test -Dgroups='smoke' -Dheadless -Dbrowser=${params.BROWSER}"
             }
         }
     }
