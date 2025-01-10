@@ -20,13 +20,13 @@ public class InicioSesionTests extends BaseTest{
     }
 
     @Description("Verificando la pagina de inicio sesion")
-    @Test
+    @Test(groups = {smoke})
     public void verificarPaginaTest(){
         inicioSesionPage.verifyPage();
     }
 
     @Description("Iniciar sesion con credenciales validas")
-    @Test
+    @Test(groups = {smoke})
     public void iniciarSesionConCredencialesValidasTest(){
         ModeloCredenciales credenciales = DataGiven.getCredencialValida(); 
         inicioSesionPage.rellenandoFormulario(credenciales.getUsername(), credenciales.getPassword());
@@ -34,7 +34,8 @@ public class InicioSesionTests extends BaseTest{
     }
 
     @Description("Intentar iniciar sesion con credenciales invalidas")
-    @Test(dataProvider = DataProviderInicioSesion.DP_DATOSINVALIDOS,dataProviderClass = DataProviderInicioSesion.class)
+    @Test(dataProvider = DataProviderInicioSesion.DP_DATOSINVALIDOS,dataProviderClass = DataProviderInicioSesion.class,
+    groups = {regression})
     public void intentarIniciarSesionConCredencialesInvalidas(String username, String password, String message){ 
         inicioSesionPage.rellenandoFormulario(username,password);
         inicioSesionPage.verificarMensaje(message);

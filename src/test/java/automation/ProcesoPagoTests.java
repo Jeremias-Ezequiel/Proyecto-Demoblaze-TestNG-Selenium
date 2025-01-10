@@ -20,7 +20,7 @@ public class ProcesoPagoTests extends BaseTest {
     }
 
     @Description("Verificar el formulario de compra")
-    @Test
+    @Test(groups = {smoke})
     public void verificarFormularioVisible(){
         procesoPago.verifyPage();
     }
@@ -37,7 +37,7 @@ public class ProcesoPagoTests extends BaseTest {
 
     @Description("Rellenar el formulario de compra con datos invalidos")
     @Test(dataProvider = DataProviderProcesoPago.DP_NEGATIVO, dataProviderClass = DataProviderProcesoPago.class,
-    groups = {regression,smoke})
+    groups = {regression})
     public void realizarCompraConDatosInvalidos(ModeloProcesoPago usuario){
         Logs.info("Test: %s",usuario.getId());
         procesoPago.rellenarFormulario(usuario.getNombre() , usuario.getPais(), usuario.getCiudad(), usuario.getTarjeta(),

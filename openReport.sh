@@ -1,1 +1,1 @@
-mvn start allure:serve
+mvn allure:serve

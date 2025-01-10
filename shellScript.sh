@@ -1,1 +1,1 @@
-./mvnw clean test -Dgroups="regression" -Dbrowser="edge" -Dheadless
+./mvnw clean test -Dgroups="smoke" -Dbrowser="chrome" -Dheadless
