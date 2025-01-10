@@ -11,6 +11,10 @@ public class WebdriverProvider {
     }
 
     public WebDriver get(){
+        WebDriver driver = threadLocal.get(); 
+        if(driver == null){
+            throw new IllegalStateException("WebDriver is not initialized. Please call Driver"); 
+        }
         return threadLocal.get();
     }
 }

@@ -35,9 +35,9 @@ public class FileManager {
 
     // Screenshot en Allure
 
-    @Attachment(value = "screenshot", type = "img/png")
-    public static byte[] getScreenshot(){
-        return ((TakesScreenshot)new WebdriverProvider().get()).getScreenshotAs(OutputType.BYTES);
-    }
+    // @Attachment(value = "screenshot", type = "img/png")
+    // public static byte[] getScreenshot(){
+    //     return ((TakesScreenshot)new WebdriverProvider().get()).getScreenshotAs(OutputType.BYTES);
+    // }
 
 }
