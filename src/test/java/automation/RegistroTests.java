@@ -40,7 +40,7 @@ public class RegistroTests extends BaseTest {
 
     @Description("Intentar registrar un usuario con caracteres limites en el input username")
     @Test(dataProvider = DataProviderRegistroUsuario.DP_LIMITEUSER, dataProviderClass = DataProviderRegistroUsuario.class, 
-    groups = {regression,smoke})
+    groups = {regression})
     public void intentarRegistrarConUsernameLimitesTest(ModeloRegistroUsuario usuario){
         System.out.printf("Caso de prueba: %s",usuario.getId());
         registroPage.rellenandoFormulario(usuario.getUsuario(),usuario.getPassword());
@@ -49,7 +49,7 @@ public class RegistroTests extends BaseTest {
 
     @Description("Intentar registrar un usuario con caracteres limites en el input password")
     @Test(dataProvider = DataProviderRegistroUsuario.DP_LIMITEPASSWORD,dataProviderClass = DataProviderRegistroUsuario.class,
-    groups = {regression,smoke})
+    groups = {regression})
     public void intentarRegistrarConPasswordLimitesTest(ModeloRegistroUsuario usuario){
         System.out.printf("Caso de prueba: %s",usuario.getId());
         registroPage.rellenandoFormulario(usuario.getUsuario(), usuario.getPassword());
