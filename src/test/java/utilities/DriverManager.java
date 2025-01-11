@@ -44,6 +44,7 @@ public class DriverManager {
                 ChromeOptions chromeOptions = new ChromeOptions(); 
                 if(headlessMode != null){
                     chromeOptions.addArguments("--headless=new");
+                    chromeOptions.addArguments("--disable-gpu");
                 }
                 yield new ChromeDriver(chromeOptions);
             }
@@ -51,6 +52,8 @@ public class DriverManager {
                 EdgeOptions edgeOptions = new EdgeOptions(); 
                 if(headlessMode != null){
                     edgeOptions.addArguments("--headless=new");
+                    edgeOptions.addArguments("--disable-gpu");
+
                 }
                 yield new EdgeDriver(edgeOptions); 
             }
@@ -58,6 +61,8 @@ public class DriverManager {
                 FirefoxOptions firefoxOptions = new FirefoxOptions(); 
                 if(headlessMode != null){
                     firefoxOptions.addArguments("--headless");
+                    firefoxOptions.addArguments("--disable-gpu");
+
                 }
                 yield new FirefoxDriver(firefoxOptions); 
             }
