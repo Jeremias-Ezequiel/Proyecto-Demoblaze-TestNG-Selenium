@@ -1,21 +1,19 @@
 pipeline{
     agent any
     tools{
-        maven
+        maven 'Maven'
     }
 
     stages{
         stage('Preparacion'){
             steps{
                 echo 'Preparando el entorno'
-                sh 'chmod +x shellScript.sh'
-                sh 'chmod +x openReport.sh'
             }
         }
         stage('Ejecutar Pruebas'){
             steps{
                 echo 'Ejecutando pruebas con Selenium y TestNG'
-                sh './shellScript.sh'
+                bat './shellScript.bat'
             }
         }
         stage('Publicar resultado'){
