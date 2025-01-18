@@ -1,7 +1,9 @@
 package automation;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import io.qameta.allure.testng.AllureTestNg;
 
 import dataProvider.DataProviderProcesoPago;
 import io.qameta.allure.Description;
@@ -10,6 +12,7 @@ import templates.ModeloProcesoPago;
 import utilities.BaseTest;
 import utilities.Logs;
 
+@Listeners(AllureTestNg.class)
 public class FormularioPagoTests extends BaseTest { 
     private final FormularioPagoPage procesoPago = new FormularioPagoPage(); 
     private final String mensajeCompraFallida = "Please fill out Name and Creditcard."; 

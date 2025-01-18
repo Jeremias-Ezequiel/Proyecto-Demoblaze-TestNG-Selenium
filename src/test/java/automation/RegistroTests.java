@@ -1,7 +1,9 @@
 package automation;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import io.qameta.allure.testng.AllureTestNg;
 
 import dataProvider.DataProviderRegistroUsuario;
 import io.qameta.allure.Description;
@@ -11,6 +13,7 @@ import templates.ModeloRegistroUsuario;
 import utilities.BaseTest;
 import utilities.Logs;
 
+@Listeners(AllureTestNg.class)
 @Feature("Registro de usuario - Chrome")
 public class RegistroTests extends BaseTest {
     private final RegistroPage registroPage = new RegistroPage(); 

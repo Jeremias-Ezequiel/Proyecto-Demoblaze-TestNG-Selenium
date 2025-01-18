@@ -1,7 +1,9 @@
 package automation;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import io.qameta.allure.testng.AllureTestNg;
 
 import data.DataGiven;
 import dataProvider.DataProviderInicioSesion;
@@ -11,6 +13,7 @@ import pages.BarraNavegacionPage;
 import pages.InicioSesionPage;
 import utilities.BaseTest;
 
+@Listeners(AllureTestNg.class)
 public class InicioSesionTests extends BaseTest{
     InicioSesionPage inicioSesionPage = new InicioSesionPage(); 
 
