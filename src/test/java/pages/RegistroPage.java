@@ -12,7 +12,7 @@ import utilities.Logs;
 
 public class RegistroPage extends BasePage {
     private final By btnRegistro = By.id("signin2");
-    private final By formulario = By.id("signInModal");
+    // private final By formulario = By.id("signInModal");
     private final By inputUsername = By.id("sign-username");
     private final By inputPassword = By.id("sign-password");
     private final By btnRegitrarse = By.xpath("//button[text()='Sign up']"); 
