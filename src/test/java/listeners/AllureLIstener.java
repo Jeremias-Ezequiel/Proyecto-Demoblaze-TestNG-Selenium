@@ -15,7 +15,7 @@ public class AllureLIstener implements TestLifecycleListener {
 
          switch (resultado){
              case BROKEN,FAILED : {
-                // FileManager.getScreenshot(); 
+                FileManager.getScreenshot(); 
              }
             default:
                 break;
