@@ -10,7 +10,7 @@ pipeline{
         stage('Ejecutar Pruebas'){
             steps{
                 echo 'Ejecutando pruebas con Selenium y TestNG'
-                bat './shellScript.sh'
+                bat './shellScript.bat'
             }
         }
         stage('Publicar resultado'){
