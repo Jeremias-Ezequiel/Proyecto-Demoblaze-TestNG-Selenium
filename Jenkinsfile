@@ -13,15 +13,11 @@ pipeline{
                 bat './shellScript.bat'
             }
         }
-        stage('Publicar reporte de Allure'){
-            steps{
-                allure includeProperties: false, jdk: '', results: [[path: '\\target\\allure-results']]
-            }
-        }
     }
     post{
         always{
             echo 'Pipeline finalizada'
+            allure includeProperties: false, jdk: '', results: [[path: '\\target\\allure-results']]
             cleanWs()       
         }
         success{
