@@ -7,16 +7,6 @@ pipeline{
     }
 
     stages{
-        stage('Limpiar resultados Allure') {
-            steps {
-                script {
-                    // Limpiar la carpeta allure-results
-                    deleteDir() // Borra todo en el workspace
-                    //sh 'rm -rf allure-results/*' // Limpiar carpeta allure-results en sistemas Unix/Linux
-                    bat 'rm -rf allure-results'
-                }
-            }
-        }
         stage('Preparacion'){
             steps{
                 echo 'Preparando el entorno'
@@ -37,7 +27,7 @@ pipeline{
         }
         stage('Publicar reporte de Allure'){
             steps{
-                allure includeProperties: false, jdk:'', results: [[path: 'env.ALLURE_RESULTS']]
+                allure includeProperties: false, jdk: '', results: [[path: '\\target\\allure-results']]
             }
         }
     }
