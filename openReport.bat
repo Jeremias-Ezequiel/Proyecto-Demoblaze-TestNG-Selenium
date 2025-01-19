@@ -1,1 +1,1 @@
-mvn allure:serve
+mvn allure:report
