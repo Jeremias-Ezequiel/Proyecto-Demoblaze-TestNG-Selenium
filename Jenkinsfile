@@ -5,7 +5,6 @@ pipeline{
         stage('Preparacion'){
             steps{
                 echo 'Preparando el entorno'
-                sh 'chmod +x shellScript.sh'
             }
         }
         stage('Ejecutar Pruebas'){
