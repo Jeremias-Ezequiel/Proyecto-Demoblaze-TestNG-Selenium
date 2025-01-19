@@ -10,7 +10,9 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverManager {
-    private final boolean runServer = System.getenv("JOB_NAME") != null; 
+    // private final boolean runServer = System.getenv("JOB_NAME") != null; 
+    private final boolean runServer = false; 
+
     private enum Browser{
         CHROME,
         FIREFOX,
