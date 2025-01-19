@@ -18,13 +18,6 @@ pipeline{
                 bat './shellScript.bat'
             }
         }
-        stage('Generar reporte allure'){
-            steps{
-                script{
-                    bat './openReport.bat'
-                }
-            }
-        }
         stage('Publicar reporte de Allure'){
             steps{
                 allure includeProperties: false, jdk: '', results: [[path: '\\target\\allure-results']]
