@@ -1,10 +1,5 @@
 pipeline{
     agent any
-    
-    environment {
-        ALLURE_RESULTS = 'allure-results' // Directorio donde se almacenan los resultados de las pruebas
-        ALLURE_REPORT = 'allure-report'   // Directorio donde se generará el reporte de Allure
-    }
 
     stages{
         stage('Preparacion'){
