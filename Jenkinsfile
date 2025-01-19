@@ -5,13 +5,13 @@ pipeline{
         stage('Preparacion'){
             steps{
                 echo 'Preparando el entorno'
-                bat 'chmod +x shellScript.sh'
+                sh 'chmod +x shellScript.sh'
             }
         }
         stage('Ejecutar Pruebas'){
             steps{
                 echo 'Ejecutando pruebas con Selenium y TestNG'
-                bat './shellScript.sh'
+                sh './shellScript.sh'
             }
         }
         stage('Publicar resultado'){
