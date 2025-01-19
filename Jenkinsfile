@@ -12,8 +12,8 @@ pipeline{
                 script {
                     // Limpiar la carpeta allure-results
                     deleteDir() // Borra todo en el workspace
-                    sh 'rm -rf allure-results/*' // Limpiar carpeta allure-results en sistemas Unix/Linux
-                    // o en Windows puedes usar: bat 'del /F /Q allure-results\\*'
+                    //sh 'rm -rf allure-results/*' // Limpiar carpeta allure-results en sistemas Unix/Linux
+                    bat 'del /F /Q allure-results\\*'
                 }
             }
         }
