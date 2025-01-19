@@ -1,5 +1,10 @@
 pipeline{
     agent any
+    
+    environment {
+        ALLURE_RESULTS = 'allure-results' // Directorio donde se almacenan los resultados de las pruebas
+        ALLURE_REPORT = 'allure-report'   // Directorio donde se generará el reporte de Allure
+    }
 
     stages{
         stage('Preparacion'){
@@ -13,11 +18,16 @@ pipeline{
                 bat './shellScript.bat'
             }
         }
-        stage('Publicar resultado'){
+        stage('Generar reporte allure'){
             steps{
-                echo 'Publicando resultados'
-                junit '**/target/surefire-reports/*.xml'
-                archiveArtifacts artifacts: '**/target/screenshots/*.png', allowEmptyArchive: true
+                script{
+                    bat './openReport.bat'
+                }
+            }
+        }
+        stage('Publicar reporte de Allure'){
+            steps{
+                allure includeProperties: false, jdk:'', results: [[path: "${env.ALLURE_RESULTS}"]]
             }
         }
     }
@@ -25,6 +35,9 @@ pipeline{
         always{
             echo 'Pipeline finalizada'
             cleanWs()       
+        }
+        success{
+            echo 'Las pruebas fueron exitosas'
         }
     }
 }
