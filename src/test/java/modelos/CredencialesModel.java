@@ -2,7 +2,7 @@ package modelos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ModeloCredenciales {
+public class CredencialesModel {
     @JsonProperty("username")
     private String username; 
     @JsonProperty("password")

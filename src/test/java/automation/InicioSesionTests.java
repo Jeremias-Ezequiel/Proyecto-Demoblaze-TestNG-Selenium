@@ -6,9 +6,9 @@ import org.testng.annotations.Test;
 import io.qameta.allure.testng.AllureTestNg;
 
 import data.DataGiven;
-import dataProvider.DataProviderInicioSesion;
+import dataProvider.LoginDataProvider;
 import io.qameta.allure.Description;
-import modelos.ModeloCredenciales;
+import modelos.CredencialesModel;
 import pages.BarraNavegacionPage;
 import pages.InicioSesionPage;
 import utilities.BaseTest;
@@ -31,13 +31,13 @@ public class InicioSesionTests extends BaseTest{
     @Description("Iniciar sesion con credenciales validas")
     @Test(groups = {smoke})
     public void iniciarSesionConCredencialesValidasTest(){
-        ModeloCredenciales credenciales = DataGiven.getCredencialValida(); 
+        CredencialesModel credenciales = DataGiven.getCredencialValida(); 
         inicioSesionPage.rellenandoFormulario(credenciales.getUsername(), credenciales.getPassword());
         new BarraNavegacionPage().verificarInicioSesionExitoso(); 
     }
 
     @Description("Intentar iniciar sesion con credenciales invalidas")
-    @Test(dataProvider = DataProviderInicioSesion.DP_DATOSINVALIDOS,dataProviderClass = DataProviderInicioSesion.class,
+    @Test(dataProvider = LoginDataProvider.DP_DATOSINVALIDOS,dataProviderClass = LoginDataProvider.class,
     groups = {regression})
     public void intentarIniciarSesionConCredencialesInvalidas(String username, String password, String message){ 
         inicioSesionPage.rellenandoFormulario(username,password);

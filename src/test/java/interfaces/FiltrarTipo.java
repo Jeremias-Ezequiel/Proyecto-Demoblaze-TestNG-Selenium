@@ -1,6 +1,6 @@
-package utils;
+package interfaces;
 
-public interface IFiltrarTipo {
+public interface FiltrarTipo {
     String obtenerTipo();
     String obtenerId();
 }

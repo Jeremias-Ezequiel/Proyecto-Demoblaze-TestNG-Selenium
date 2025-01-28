@@ -1,7 +1,8 @@
-package reader;
+package data;
 
 import com.poiji.bind.Poiji;
-import utils.IFiltrarTipo;
+
+import interfaces.FiltrarTipo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class ExcelReader {
         return  Poiji.fromExcel(new File(excelPath), clase);
     }
 
-    public static <T extends IFiltrarTipo> List<T> filtrarPorTipo(List<T> listaCompleta, String tipo){
+    public static <T extends FiltrarTipo> List<T> filtrarPorTipo(List<T> listaCompleta, String tipo){
         List<T> listaFiltrada = new ArrayList<>();
 
         for(T objeto : listaCompleta){
@@ -25,7 +26,7 @@ public class ExcelReader {
         return listaFiltrada;
     }
 
-    public static <T extends IFiltrarTipo> T filtrarPorId(List<T> listaCompleta, String id){
+    public static <T extends FiltrarTipo> T filtrarPorId(List<T> listaCompleta, String id){
         T datos = null;
 
         for(T objeto : listaCompleta){

@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.testng.annotations.DataProvider;
 
-import reader.ExcelReader;
-import templates.ModeloRegistroUsuario;
+import data.ExcelReader;
+import modelos.RegisterModel;
 
-public class DataProviderRegistroUsuario {
+public class RegistterDataProvider {
     public static final String DP_COMPLETO = "CasosMixtos"; 
     public static final String DP_POSITIVO = "CasosPositivos";
     public static final String DP_NEGATIVO = "CasosNegativos"; 
@@ -21,43 +21,43 @@ public class DataProviderRegistroUsuario {
 
     @DataProvider(name = DP_COMPLETO)
     public Object[][] dataProvider(){
-        List<ModeloRegistroUsuario> listaCompleta = ExcelReader.obtenerExcel(ModeloRegistroUsuario.class); 
+        List<RegisterModel> listaCompleta = ExcelReader.obtenerExcel(RegisterModel.class); 
         return convertirListaAObjectArray(listaCompleta); 
     }
 
     @DataProvider(name = DP_NEGATIVO)
     public Object[][] casosNegativos(){
         String casoNegativos = "NEG"; 
-        List<ModeloRegistroUsuario> listaCompleta = ExcelReader.obtenerExcel(ModeloRegistroUsuario.class); 
-        List<ModeloRegistroUsuario> listaNegativos = ExcelReader.filtrarPorTipo(listaCompleta, casoNegativos); 
+        List<RegisterModel> listaCompleta = ExcelReader.obtenerExcel(RegisterModel.class); 
+        List<RegisterModel> listaNegativos = ExcelReader.filtrarPorTipo(listaCompleta, casoNegativos); 
         return convertirListaAObjectArray(listaNegativos); 
     }
 
     @DataProvider(name = DP_POSITIVO)
     public Object[][] casosPositivos(){
         String casosPositivos = "POS"; 
-        List<ModeloRegistroUsuario> listaCompleta = ExcelReader.obtenerExcel(ModeloRegistroUsuario.class); 
-        List<ModeloRegistroUsuario> listaFiltrada = ExcelReader.filtrarPorTipo(listaCompleta, casosPositivos); 
+        List<RegisterModel> listaCompleta = ExcelReader.obtenerExcel(RegisterModel.class); 
+        List<RegisterModel> listaFiltrada = ExcelReader.filtrarPorTipo(listaCompleta, casosPositivos); 
         return convertirListaAObjectArray(listaFiltrada); 
     }
 
     @DataProvider(name = DP_LIMITEUSER) 
     public Object[][] casosLimitesUser(){
         String username = "username"; 
-        List<ModeloRegistroUsuario> listaCompleta = ExcelReader.obtenerExcel(ModeloRegistroUsuario.class); 
-        List<ModeloRegistroUsuario> listaFiltrada = filtrarPorLimites(listaCompleta,username); 
+        List<RegisterModel> listaCompleta = ExcelReader.obtenerExcel(RegisterModel.class); 
+        List<RegisterModel> listaFiltrada = filtrarPorLimites(listaCompleta,username); 
         return convertirListaAObjectArray(listaFiltrada); 
     }
 
     @DataProvider(name = DP_LIMITEPASSWORD) 
     public Object[][] casosLimitesPassword(){
         String password = "password"; 
-        List<ModeloRegistroUsuario> listaCompleta = ExcelReader.obtenerExcel(ModeloRegistroUsuario.class); 
-        List<ModeloRegistroUsuario> listaFiltrada = filtrarPorLimites(listaCompleta,password); 
+        List<RegisterModel> listaCompleta = ExcelReader.obtenerExcel(RegisterModel.class); 
+        List<RegisterModel> listaFiltrada = filtrarPorLimites(listaCompleta,password); 
         return convertirListaAObjectArray(listaFiltrada); 
     }
 
-    private Object[][] convertirListaAObjectArray(List<ModeloRegistroUsuario> listaCompleta){
+    private Object[][] convertirListaAObjectArray(List<RegisterModel> listaCompleta){
         int tamanio = listaCompleta.size(); 
         Object[][] object = new Object[tamanio][]; 
         
@@ -68,10 +68,10 @@ public class DataProviderRegistroUsuario {
         return object; 
     }
 
-    private List<ModeloRegistroUsuario> filtrarPorLimites(List<ModeloRegistroUsuario> listaCompleta,String propiedad){
-        List<ModeloRegistroUsuario> listaFiltrada = new ArrayList<>(); 
+    private List<RegisterModel> filtrarPorLimites(List<RegisterModel> listaCompleta,String propiedad){
+        List<RegisterModel> listaFiltrada = new ArrayList<>(); 
         if(propiedad.equalsIgnoreCase("username")){
-            for(ModeloRegistroUsuario dato : listaCompleta){
+            for(RegisterModel dato : listaCompleta){
                 if(dato.getUsuario().length() < minCharUsername || dato.getUsuario().length() > maxCharUsername){
                     listaFiltrada.add(dato); 
                 }
@@ -79,7 +79,7 @@ public class DataProviderRegistroUsuario {
         }
 
         if(propiedad.equalsIgnoreCase("password")){
-            for(ModeloRegistroUsuario dato : listaCompleta){
+            for(RegisterModel dato : listaCompleta){
                 if(dato.getPassword().length() < minCharPassword || dato.getPassword().length() > maxCharPassword){
                     listaFiltrada.add(dato); 
                 }

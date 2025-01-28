@@ -1,11 +1,12 @@
-package templates;
+package modelos;
 
 import com.poiji.annotation.ExcelCellName;
 import com.poiji.annotation.ExcelSheet;
-import utils.IFiltrarTipo;
+
+import interfaces.FiltrarTipo;
 
 @ExcelSheet("Registro de usuario")
-public class ModeloRegistroUsuario implements IFiltrarTipo {
+public class RegisterModel implements FiltrarTipo {
     @ExcelCellName("ID")
     private String id;
     @ExcelCellName("USUARIO")

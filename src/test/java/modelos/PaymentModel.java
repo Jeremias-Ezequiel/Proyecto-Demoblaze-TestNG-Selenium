@@ -1,11 +1,12 @@
-package templates;
+package modelos;
 
 import com.poiji.annotation.ExcelCellName;
 import com.poiji.annotation.ExcelSheet;
-import utils.IFiltrarTipo;
+
+import interfaces.FiltrarTipo;
 
 @ExcelSheet("Proceso de pago")
-public class ModeloProcesoPago implements IFiltrarTipo {
+public class PaymentModel implements FiltrarTipo {
     @ExcelCellName("ID")
     private String id;
     @ExcelCellName("NOMBRE")

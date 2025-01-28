@@ -39,7 +39,6 @@ public class DriverManager {
         }
 
         Browser browser = Browser.valueOf(browserProperty.toUpperCase()); 
-        // final WebDriver driver = new ChromeDriver();
         Logs.debug("Inicianlizando driver : %s",browser);
         WebDriver driver  = switch(browser){
             case CHROME -> {

@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CredencialJson {
     @JsonProperty("credenciales")
-    private Map<String, ModeloCredenciales> mapCredenciales;
+    private Map<String, CredencialesModel> mapCredenciales;
 
-    public Map<String, ModeloCredenciales> getMapCredenciales() {
+    public Map<String, CredencialesModel> getMapCredenciales() {
         return mapCredenciales;
     } 
 

@@ -2,22 +2,22 @@ package data;
 
 import java.util.Map;
 
-import modelos.ModeloCredenciales;
+import modelos.CredencialesModel;
 
 public class DataGiven {
-    public static Map<String,ModeloCredenciales> obtenerMapCredenciales(){
+    public static Map<String,CredencialesModel> obtenerMapCredenciales(){
         return JsonReader.obtenerMapCredenciales().getMapCredenciales();
     }
 
-    public static ModeloCredenciales getCredencialValida(){
+    public static CredencialesModel getCredencialValida(){
         return obtenerMapCredenciales().get("valido");
     }
 
-    public static ModeloCredenciales getCredencialInvalida(){
+    public static CredencialesModel getCredencialInvalida(){
         return obtenerMapCredenciales().get("invalido");
     }
 
-    public static ModeloCredenciales getCredencialInexistente(){
+    public static CredencialesModel getCredencialInexistente(){
         return obtenerMapCredenciales().get("inexistente");
     }
 }

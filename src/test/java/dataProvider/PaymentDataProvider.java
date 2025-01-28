@@ -1,27 +1,28 @@
 package dataProvider;
 
 import org.testng.annotations.DataProvider;
-import reader.ExcelReader;
-import templates.ModeloProcesoPago;
+
+import data.ExcelReader;
+import modelos.PaymentModel;
 
 import java.util.List;
 
-public class DataProviderProcesoPago {
+public class PaymentDataProvider {
     public static final String DP_COMPLETO = "CasosMixtos ";
     public static final String DP_NEGATIVO = "CasosNegativos";
     public static final String DP_POSITIVO = "CasoPositivos";
 
     @DataProvider(name = DP_COMPLETO)
     public Object[][] dataProvider(){
-        List<ModeloProcesoPago> listaCompleta = ExcelReader.obtenerExcel(ModeloProcesoPago.class);
+        List<PaymentModel> listaCompleta = ExcelReader.obtenerExcel(PaymentModel.class);
         return convertirListaAObjectArray(listaCompleta);
     }
 
     @DataProvider(name = DP_NEGATIVO)
     public Object[][] casosNegativos(){
         String casoNegativo = "NEG";
-        List<ModeloProcesoPago> listaCompleta = ExcelReader.obtenerExcel(ModeloProcesoPago.class);
-        List<ModeloProcesoPago> listaNegativos = ExcelReader.filtrarPorTipo(listaCompleta,casoNegativo);
+        List<PaymentModel> listaCompleta = ExcelReader.obtenerExcel(PaymentModel.class);
+        List<PaymentModel> listaNegativos = ExcelReader.filtrarPorTipo(listaCompleta,casoNegativo);
 
         return convertirListaAObjectArray(listaNegativos);
     }
@@ -29,13 +30,13 @@ public class DataProviderProcesoPago {
     @DataProvider(name = DP_POSITIVO)
     public Object[][] casosPositivos(){
         String casoPositivo = "POS";
-        List<ModeloProcesoPago> listaCompleta = ExcelReader.obtenerExcel(ModeloProcesoPago.class);
-        List<ModeloProcesoPago> listaPositivo = ExcelReader.filtrarPorTipo(listaCompleta,casoPositivo);
+        List<PaymentModel> listaCompleta = ExcelReader.obtenerExcel(PaymentModel.class);
+        List<PaymentModel> listaPositivo = ExcelReader.filtrarPorTipo(listaCompleta,casoPositivo);
 
         return convertirListaAObjectArray(listaPositivo);
     }
 
-    private Object[][] convertirListaAObjectArray(List<ModeloProcesoPago> lista){
+    private Object[][] convertirListaAObjectArray(List<PaymentModel> lista){
         int tamanio = lista.size();
         Object[][] object = new Object[tamanio][];
 
