@@ -1,0 +1,1 @@
+./mvnw clean test -Dgroups="smoke" -Dbrowser="chrome" -Dheadless
