@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExcelReader {
-    private static final String excelPath = "src/main/java/data/DatosEntrada.xlsx";
+    private static final String excelPath = "src/test/resources/data/DatosEntrada.xlsx";
 
     public static <T> List<T> obtenerExcel(Class<T> clase){
         return  Poiji.fromExcel(new File(excelPath), clase);
