@@ -1,5 +1,6 @@
 package utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,6 +43,7 @@ public class DriverManager {
         Logs.debug("Inicianlizando driver : %s",browser);
         WebDriver driver  = switch(browser){
             case CHROME -> {
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions(); 
                 if(headlessMode != null){
                     chromeOptions.addArguments("--headless=new");
@@ -50,6 +52,7 @@ public class DriverManager {
                 yield new ChromeDriver(chromeOptions);
             }
             case EDGE -> {
+                WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions(); 
                 if(headlessMode != null){
                     edgeOptions.addArguments("--headless=new");
@@ -59,6 +62,7 @@ public class DriverManager {
                 yield new EdgeDriver(edgeOptions); 
             }
             case FIREFOX -> {
+                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions(); 
                 if(headlessMode != null){
                     firefoxOptions.addArguments("--headless");

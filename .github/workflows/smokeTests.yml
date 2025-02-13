@@ -29,11 +29,18 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    # Step 2: Give execute permission to mvnw
+    - name: Give execute permission to mvnw
+      run: chmod +x mvnw
 
-    # Step 2: Install Maven dependencies
+    # Step 3: Give execute permission for smoke test
+    - name: Give execute permission to smokeTests.sh
+      run: chmod +x smokeTests.sh
+
+    # Step 3: Install Maven dependencies
     - name: Build with Maven
       run: ./mvnw clean install
 
-    # Step 3: Execute test script (Shell Script)
+    # Step 4: Execute test script (Shell Script)
     - name: Run Smoke tests
-      run: ./smokeTest.sh
+      run: ./smokeTests.sh
