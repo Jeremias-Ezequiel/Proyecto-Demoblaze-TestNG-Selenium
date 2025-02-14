@@ -43,7 +43,7 @@ public class DriverManager {
         Logs.debug("Inicianlizando driver : %s",browser);
         WebDriver driver  = switch(browser){
             case CHROME -> {
-                WebDriverManager.chromedriver().driverVersion("114.0.5735.90").setup();
+                WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions(); 
                 if(headlessMode != null){
                     chromeOptions.addArguments("--headless=new");
@@ -52,7 +52,7 @@ public class DriverManager {
                 yield new ChromeDriver(chromeOptions);
             }
             case EDGE -> {
-                WebDriverManager.edgedriver().driverVersion("114.0.1823.79").setup();
+                WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions(); 
                 if(headlessMode != null){
                     edgeOptions.addArguments("--headless=new");
@@ -62,14 +62,14 @@ public class DriverManager {
                 yield new EdgeDriver(edgeOptions); 
             }
             case FIREFOX -> {
-                WebDriverManager.firefoxdriver().driverVersion("0.32.2").setup();
+                WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions(); 
                 if(headlessMode != null){
                     firefoxOptions.addArguments("--headless");
                     firefoxOptions.addArguments("--disable-gpu");
 
                 }
-                yield new FirefoxDriver(firefoxOptions); 
+                yield new FirefoxDriver(firefoxOptions);
             }
             case SAFARI -> {
                 yield new SafariDriver(); 
