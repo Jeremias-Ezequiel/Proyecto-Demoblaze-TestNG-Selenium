@@ -43,7 +43,7 @@ public class DriverManager {
         Logs.debug("Inicianlizando driver : %s",browser);
         WebDriver driver  = switch(browser){
             case CHROME -> {
-                WebDriverManager.chromedriver().setup();
+                WebDriverManager.chromedriver().driverVersion("114.0.5735.90").setup();
                 ChromeOptions chromeOptions = new ChromeOptions(); 
                 if(headlessMode != null){
                     chromeOptions.addArguments("--headless=new");
@@ -52,7 +52,7 @@ public class DriverManager {
                 yield new ChromeDriver(chromeOptions);
             }
             case EDGE -> {
-                WebDriverManager.edgedriver().setup();
+                WebDriverManager.edgedriver().driverVersion("114.0.1823.79").setup();
                 EdgeOptions edgeOptions = new EdgeOptions(); 
                 if(headlessMode != null){
                     edgeOptions.addArguments("--headless=new");
@@ -62,7 +62,7 @@ public class DriverManager {
                 yield new EdgeDriver(edgeOptions); 
             }
             case FIREFOX -> {
-                WebDriverManager.firefoxdriver().setup();
+                WebDriverManager.firefoxdriver().driverVersion("0.32.2").setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions(); 
                 if(headlessMode != null){
                     firefoxOptions.addArguments("--headless");
