@@ -43,4 +43,10 @@ jobs:
 
     # Step 4: Execute test script (Shell Script)
     - name: Run Smoke tests
-      run: ./smokeTests.sh
+      run: ./smokeTests.sh chrome
+
+    - name: Run Smoke tests
+      run: ./smokeTests.sh edge
+
+    - name: Run Smoke tests
+      run: ./smokeTests.sh firefox
